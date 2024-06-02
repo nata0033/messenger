@@ -96,6 +96,7 @@ def index():
                 new_message = Message(ChatId=chat_id, SenderId=user_id, ContentId=new_content.Id)
                 session.add(new_message)
                 session.commit()
+                return redirect(url_for('index', chat_id=chat_id))
             except:
                 pass
 
@@ -136,6 +137,10 @@ def index():
             return render_template('index.html', chats=chats, found_users=found_users)
         except:
             pass
+
+    if request.args.get('found_users'):
+        found_users = request.args.get('found_users')
+        return render_template('index.html', chats=chats, user_id=user_id)
 
     return render_template('index.html', chats=chats, user_id=user_id)
 
