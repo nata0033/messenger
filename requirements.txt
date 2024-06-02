@@ -2,3 +2,4 @@ flask
 SQLAlchemy
 werkzeug
 flask_login
+sqlalchemy_serializer
