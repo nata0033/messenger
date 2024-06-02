@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+    <div class="paper center_div">
+        <div>
+            <h1>Регистрация</h1>
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" name="photo_file"><br>
+                <input type="text" name="name" placeholder="Имя" value="{{ data[0] }}"><br>
+                <input type="text" name="login", placeholder="Логин" value="{{ data[1] }}"><br>
+                <input type="password" name="password" placeholder="Пароль" value="{{ data[2] }}"><br>
+                <input type="password" name="repeat_password" placeholder="Повторите пароль" value="{{ data[3] }}"><br>
+                <input type="submit" value="Зарегистрироваться"><br>
+            </form>
+        </div>
+        {% if error_message is defined %}
+            <p>{{ error_message }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

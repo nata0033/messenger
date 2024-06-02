@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавить пользователей
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+    <div class="paper top_div">
+        <div>
+            <h1 class="top_div">Редактор участников</h1>
+            <div class="top_div">
+                <form method="post">
+                    <input type="text" name="search" placeholder="Найти пользователя">
+                    <input type="submit" value="Поиск">
+                </form>
+            </div>
+            <div class="top_div">
+                {% if found_users is defined %}
+                    {% for found_user in found_users %}
+                        <a href="{{ url_for('edit_participants', new_participant_id=found_user.Id, group_chat_id=group_chat.Id) }}"> @{{ found_user.Login }} : {{ found_user.Name }}</a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="scrolling">
+                {% for group_chat_participant in group_chat_participants %}
+                    {% if group_chat_participant.ChatParticipant.Status == 0 %}
+                        <p>@{{ group_chat_participant.User.Login }} : {{ group_chat_participant.User.Name }} </p>
+                        <a href="{{ url_for('change_status', user_id=group_chat_participant.User.Id, group_chat_id=group_chat_participant.ChatParticipant.ChatId) }}">☆</a>
+                        <a href="{{ url_for('leave_chat', user_id=group_chat_participant.User.Id, group_chat_id=group_chat_participant.ChatParticipant.ChatId) }}">✖</a>
+                    {% else %}
+                        <p>@{{ group_chat_participant.User.Login }} : {{ group_chat_participant.User.Name }}</p>
+                        <a href="{{ url_for('change_status', user_id=group_chat_participant.User.Id, group_chat_id=group_chat_participant.ChatParticipant.ChatId) }}">★</a>
+                        <a href="{{ url_for('leave_chat', user_id=group_chat_participant.User.Id, group_chat_id=group_chat_participant.ChatParticipant.ChatId) }}">✖</a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="top_div">
+                <a class="mimic_button" href="{{ url_for('edit_group_chat', group_chat_id=group_chat.Id) }}">В редактор</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

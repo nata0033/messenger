@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+        <div class="paper center_div">
+                <div>
+                        <img class="profile_img" src="{{user.Photo}}">
+                        <div class="profile_info">
+                                <p>{{user.Name}}</p>
+                                <p>@{{user.Login}}</p>
+                        </div>
+                        <div class="top_div">
+                                {% if user.Id == current_user_id %}
+                                        <a class="mimic_button" href="/edit_profile">Редактировать</a>
+                                {% else %}
+                                        <a class="mimic_button" href="{{ url_for('index', new_contact_id=user.Id) }}">Написать</a>
+                                {% endif %}
+                        </div>
+                </div>
+        </div>
+</div>
+{% endblock %}

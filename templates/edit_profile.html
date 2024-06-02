@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Профиль
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+        <div class="paper center_div">
+                <div>
+                        <div>
+                            <h1>Редактор<br>профиля</h1>
+                            <form method="post" enctype="multipart/form-data">
+                                <input type="file" name="photo_file"><br>
+                                <input type="text" name="name" value="{{user.Name}}" placeholder="Имя"><br>
+                                <input type="submit" value="Сохранить"><br>
+                            </form>
+                        </div>
+                </div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+        Информация о чате
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+        <div class="paper top_div">
+                {% if group_chat_participants is defined %}
+                        <div>
+                                <h1>{{ chat_name }}</h1>
+                                <div class="scrolling">
+                                        {% for group_chat_participant in group_chat_participants %}
+                                                {% if group_chat_participant.ChatParticipant.Status == 0 %}
+                                                        <a href="{{ url_for('profile', user_id=group_chat_participant.ChatParticipant.UserId) }}">@{{group_chat_participant.User.Login}} : {{group_chat_participant.User.Name}}</a>
+                                                {% else %}
+                                                        <a href="{{ url_for('profile', user_id=group_chat_participant.ChatParticipant.UserId) }}">@{{group_chat_participant.User.Login}} : {{group_chat_participant.User.Name}} ★</a>
+                                                {% endif %}
+                                        <br>
+                                        {% endfor %}
+                                </div>
+                                <div class="top_div">
+                                {% if group_chat_id_for_edit > -1 %}
+                                        <a class="mimic_button" href="{{ url_for('edit_group_chat', group_chat_id=group_chat_id_for_edit) }}">Редактировать</a>
+                                {% endif %}
+                                </div>
+                        </div>
+                {% endif %}
+        </div>
+</div>
+{% endblock %}

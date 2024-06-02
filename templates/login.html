@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+    <div class="paper center_div">
+        <div>
+            <h1 class="form_h1">Вход</h1>
+            <form method="post">
+                <input type="text" name="login", placeholder="Логин" value="{{ data[0] }}"><br>
+                <input type="password" name="password" placeholder="Пароль" value="{{ data[1] }}"><br>
+                <input type="submit" value="Войти"><br>
+            </form>
+        </div>
+            {% if error_message is defined %}
+                <p class="error_message">{{ error_message }}</p>
+            {% endif %}
+    </div>
+</div>
+{% endblock %}

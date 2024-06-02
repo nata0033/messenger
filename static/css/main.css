@@ -1,0 +1,117 @@
+* :not(header, body, div){
+    margin: 5px;
+}
+
+header{
+    width:100%;
+    height:70px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: #b1c8ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+
+a {
+    margin: 5px;
+    color: #262827;
+}
+
+a:visited {
+    color: #262827;
+
+}
+
+a:hover {
+    color: #faf3e1;
+    text-decoration: underline;
+}
+
+.background_image{
+    width:100%;
+    height: 100vh;
+    background-image: url('/static/images/d984c86d40a5b8ce1f6f6b13142e7229.jpg');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.paper{
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    width: 350px;
+    height: 400px;
+    background-image: url('/static/images/b0039dc6a1836249a5875f4f43881648.jpg');
+    background-size: cover;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+}
+
+.center_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_div{
+    display: flex;
+    justify-content: center;
+}
+
+.form_h1{
+    text-align: center;
+}
+
+.form_button {
+    margin-left: 65px;
+}
+
+.profile_img{
+    height: 200px;
+    border-radius: 50%;
+}
+
+.profile_info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mimic_button{
+    border-radius: 3px;
+    background-color: #b1c8ce;  padding: 3px;
+    border: 1px solid #000;
+    color: black;
+    text-decoration: none;
+}
+
+.scrolling{
+    overflow-y: auto;
+    max-height: 290px;
+}
+
+.chat_form{
+    position: absolute;
+    bottom: 0;
+}
+
+.message{
+
+}
+.my{
+    float: right;
+}
+
+.other{
+    float: left;
+}
+

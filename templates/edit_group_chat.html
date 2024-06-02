@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Редактирование группового чата
+{% endblock %}
+
+{% block body %}
+<div class="background_image">
+    <div class="paper top_div">
+        <div>
+            <h1 class="top_div">Редактор чата</h1>
+            <div class="top_div">
+                <form method="post">
+                    <input type="text" name="name" placeholder="Название" value="{{ group_chat.Name }}">
+                    <input type="submit" value="Сохранить">
+                </form>
+            </div>
+            <div class="scrolling">
+                {% for group_chat_participant in group_chat_participants %}
+                        {% if group_chat_participant.ChatParticipant.Status == 0 %}
+                            <p>@{{ group_chat_participant.User.Login }} : {{ group_chat_participant.User.Name }}</p>
+                        {% else %}
+                            <p>@{{ group_chat_participant.User.Login }} : {{ group_chat_participant.User.Name }} ★</p>
+                        {% endif %}
+                {% endfor %}
+            </div>
+            <div class="top_div">
+                <a class="mimic_button" href="{{ url_for('edit_participants', group_chat_id=group_chat.Id) }}">Редактировать участников</a><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
